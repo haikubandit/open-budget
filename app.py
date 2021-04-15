@@ -71,9 +71,10 @@ def budget_api(year):
             "id": fund.id,
             "dept": fund.department.dept_name,
             "allocation": fund.allocation,
-            "year": fund.year})
+            "year": fund.year
+        })
 
     # pdb.set_trace()
 
 
-    return jsonify(depts=json_gf)
+    return jsonify(generalFundByDept=json_gf)
