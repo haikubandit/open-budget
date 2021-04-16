@@ -64,7 +64,7 @@ class GeneralFund(db.Model):
 
     dept_code = db.Column(db.Text, db.ForeignKey('departments.dept_code'))
 
-    allocation = db.Column(db.Float, nullable=False,)
+    budget = db.Column(db.Float, nullable=False,)
 
     year = db.Column(db.Integer,)
 
@@ -72,11 +72,42 @@ class GeneralFund(db.Model):
         """Returns a dict representation of departments which we can turn into JSON"""
         return {
             'dept_code': self.dept_code,
-            'allocation': self.allocation,
+            'budget': self.budget,
             'year': self.year
             # 'department': self.department
         }
 
+    def __repr__(self):
+        return f"<GeneralFund {self.id} {self.dept_code} {self.budget} {self.year} >"
+
+
+class RevenueSource(db.Model):
+    """User in the system."""
+
+    __tablename__ = 'revenuesources'
+
+    id = db.Column(db.Integer, primary_key=True,)
+
+    revenue_code = db.Column(db.Text, nullable=False,)
+
+    revenue_name = db.Column(db.Text, nullable=False,)
+
+    description = db.Column(db.Text, nullable=True,)
+
+    budget = db.Column(db.Float, nullable=False,)
+
+    year = db.Column(db.Integer, nullable=False,)
+
+    def serialize(self):
+        """Returns a dict representation of departments which we can turn into JSON"""
+        return {
+            'id': self.id,
+            'revenue_code': self.revenue_code,
+            'description': self.description,
+            'budget': self.budget,
+            'year': self.year
+            # 'department': self.department
+        }
 
     def __repr__(self):
-        return f"<GeneralFund {self.id} {self.dept_code} {self.allocation} {self.year} >"
+        return f"<RevenueSource {self.revenue_code} {self.budget} {self.year} >"

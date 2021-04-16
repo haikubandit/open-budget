@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, flash, redirect, jsonify, ses
 from flask_debugtoolbar import DebugToolbarExtension
 from sqlalchemy.exc import IntegrityError
 
-from models import db, connect_db, Department, Division, GeneralFund
+from models import db, connect_db, Department, Division, GeneralFund, RevenueSource
 # from forms import NewSongForPlaylistForm, SongForm, PlaylistForm
 
 import pdb
@@ -57,24 +57,88 @@ def homepage():
 # API routes
 
 @app.route('/api/<int:year>')
-def budget_api(year):
+def api_budget_by_year(year):
     """Get budget data by year
 
     """
-    json_gf = []
+    # json_gf = []
     # all_depts = [dept.serialize() for dept in Department.query.all()]
-    all_gf = [gf.serialize() for gf in GeneralFund.query.all()]
+    # all_gf = [gf.serialize() for gf in GeneralFund.query.all()]
+    # GFunds = GeneralFund.query.filter(GeneralFund.year==year)
+    # for fund in GFunds:
+
+    #     json_gf.append({
+    #         "id": fund.id,
+    #         "dept": fund.department.dept_name,
+    #         "budget": fund.budget,
+    #         "year": fund.year
+    #     })
+
+    json_budget = []
+    json_gf = {}
+    json_gf['general_fund'] = {}
+    json_revenue = {}
+    json_revenue['revenues'] = {}
+    # all_depts = [dept.serialize() for dept in Department.query.all()]
+    # all_gf = [gf.serialize() for gf in GeneralFund.query.all()]
     GFunds = GeneralFund.query.filter(GeneralFund.year==year)
     for fund in GFunds:
 
-        json_gf.append({
-            "id": fund.id,
+        json_gf['general_fund'][fund.id] = {
+            # "id": fund.id,
             "dept": fund.department.dept_name,
-            "allocation": fund.allocation,
+            "budget": fund.budget,
             "year": fund.year
-        })
+        }
+
+    revenues = RevenueSource.query.filter(RevenueSource.year==year)
+    for source in revenues:
+
+        json_revenue['revenues'][source.id] = {
+            "dept": source.revenue_code,
+            "dept": source.revenue_name,
+            "budget": source.budget,
+            "year": source.year
+        }
+
+    json_budget.append(json_gf)
+    json_budget.append(json_revenue)
 
     # pdb.set_trace()
 
+    return jsonify(budgetData=json_budget)
 
-    return jsonify(generalFundByDept=json_gf)
+
+# @app.route('/api/<int:year>')
+# def api_revenue_by_year(year):
+#     """Get budget revenue data by year
+
+#     """
+#     json_gf = []
+#     # all_depts = [dept.serialize() for dept in Department.query.all()]
+#     all_gf = [gf.serialize() for gf in GeneralFund.query.all()]
+#     GFunds = GeneralFund.query.filter(GeneralFund.year==year)
+#     for fund in GFunds:
+
+#         json_gf.append({
+#             "id": fund.id,
+#             "dept": fund.department.dept_name,
+#             "budget": fund.budget,
+#             "year": fund.year
+#         })
+
+#     # pdb.set_trace()
+
+
+#     return jsonify(generalFundByDept=json_gf)
+
+
+@app.route('/api/<dept_code>')
+def api_city_departments(dept_code):
+    """Get all city departments
+
+    """
+
+    departments = [dept.serialize() for dept in Department.query.all()]
+
+    return jsonify(departments=departments)
