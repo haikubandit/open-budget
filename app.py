@@ -76,30 +76,31 @@ def api_budget_by_year(year):
 
     json_budget = []
     json_gf = {}
-    json_gf['general_fund'] = {}
+    json_gf['general_fund'] = []
     json_revenue = {}
-    json_revenue['revenues'] = {}
+    json_revenue['revenues'] = []
     # all_depts = [dept.serialize() for dept in Department.query.all()]
     # all_gf = [gf.serialize() for gf in GeneralFund.query.all()]
     GFunds = GeneralFund.query.filter(GeneralFund.year==year)
     for fund in GFunds:
 
-        json_gf['general_fund'][fund.id] = {
-            # "id": fund.id,
+        json_gf['general_fund'].append({
+            "id": fund.id,
             "dept": fund.department.dept_name,
             "budget": fund.budget,
             "year": fund.year
-        }
+        })
 
     revenues = RevenueSource.query.filter(RevenueSource.year==year)
     for source in revenues:
 
-        json_revenue['revenues'][source.id] = {
+        json_revenue['revenues'].append({
+            "id": source.id,
             "dept": source.revenue_code,
             "dept": source.revenue_name,
             "budget": source.budget,
             "year": source.year
-        }
+        })
 
     json_budget.append(json_gf)
     json_budget.append(json_revenue)

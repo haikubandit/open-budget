@@ -14,21 +14,20 @@ async function processGetRequest() {
 	return resp.data;
 }
 
-let promise = processGetRequest();
+budgetDataResp = await processGetRequest();
 
 // let budgetDataEntries = Object.entries(budgetDataResp[0]);
 
-processGetRequest.success(data => alert(data));
-// console.log(budgetDataResp);
+console.log(budgetDataResp.general_fund);
+
+
 
 // push general fund data into chart data and label arrays
-// for (const deptFund of budgetDataResp['general_fund']) {
+for (const [budgetType, budgetData] of Object.entries(budgetDataResp)) {
 
-// 	console.log(deptFund);
-// 	console.log('test')
-// 	// generalFundData.push(deptFund.allocation);
-// 	// generalFundLabel.push(deptFund.dept);
-// }
+	// generalFundData.push(deptFund.allocation);
+	// generalFundLabel.push(deptFund.dept);
+}
 
 var ctxGeneralFund = document.getElementById('generalFundChart').getContext('2d');
 var generalFundChart = new Chart(ctxGeneralFund, {
