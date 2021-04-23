@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Open Budget Omaha</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lumen/bootstrap.min.css" integrity="sha384-GzaBcW6yPIfhF+6VpKMjxbTx6tvR/yRd/yJub90CqoIn2Tz4rRXlSpTFYMKHCifX" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
-    <script src="https://unpkg.com/jquery"></script>
 </head>
 <body>
 
@@ -47,25 +45,39 @@
         </div>
     </nav>
 
-    <main class="container d-flex justify-content-center bg-primary">
+    <main class="container justify-content-center bg-primary">
         <div class="row">
-          <div class="col">
-            <div id="charts" class="bg-white" style="width:500px;height:500px;">
-              <canvas id="generalFundChart" style="width:100%;height:100%;"></canvas>
+          <div class="col-md-6">
+            <div class="bg-white">
+              <h3>City General Fund</h3>
             </div>
           </div>
-          <!-- <div class="col">
+          <div class="col-md-6">
             <div id="charts" class="bg-white" style="width:500px;height:500px;">
               <canvas id="revenuesChart" style="width:100%;height:100%;"></canvas>
             </div>
-          </div> -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="bg-white">
+              <h3>City Revenues</h3>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <!-- <div id="charts" class="bg-white" style="width:500px;height:500px;">
+              <canvas id="revenuesChart" style="width:100%;height:100%;"></canvas>
+            </div> -->
+          </div>
         </div>
     </main>
 
 
+    <script src="https://unpkg.com/jquery"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.2/dist/chart.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.js"></script>
-    <script type="module" src="/static/app.js"></script>
+    <script src="/static/app.js"></script>
     <script src="/static/charts.js"></script>
 </body>
 </html>
