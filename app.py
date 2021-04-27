@@ -43,7 +43,7 @@ def homepage():
 
     """
 
-    return render_template('base.html')
+    return render_template('charts.html')
 
 
 # @app.errorhandler(404)
@@ -54,26 +54,28 @@ def homepage():
 
 
 ##############################################################################
+# Budget and API Pages
+
+
+@app.route('/docs/api')
+def api_docs():
+    """Show API documentation page:
+
+    """
+
+    return render_template('API_docs.html')
+
+
+
+##############################################################################
 # API routes
+
 
 @app.route('/api/<int:year>')
 def api_budget_by_year(year):
     """Get budget data by year
 
     """
-    # json_gf = []
-    # all_depts = [dept.serialize() for dept in Department.query.all()]
-    # all_gf = [gf.serialize() for gf in GeneralFund.query.all()]
-    # GFunds = GeneralFund.query.filter(GeneralFund.year==year)
-    # for fund in GFunds:
-
-    #     json_gf.append({
-    #         "id": fund.id,
-    #         "dept": fund.department.dept_name,
-    #         "budget": fund.budget,
-    #         "year": fund.year
-    #     })
-
     json_budget = []
     json_gf = {}
     json_gf['general_fund'] = []
@@ -108,30 +110,6 @@ def api_budget_by_year(year):
     # pdb.set_trace()
 
     return jsonify(budgetData=json_budget)
-
-
-# @app.route('/api/<int:year>')
-# def api_revenue_by_year(year):
-#     """Get budget revenue data by year
-
-#     """
-#     json_gf = []
-#     # all_depts = [dept.serialize() for dept in Department.query.all()]
-#     all_gf = [gf.serialize() for gf in GeneralFund.query.all()]
-#     GFunds = GeneralFund.query.filter(GeneralFund.year==year)
-#     for fund in GFunds:
-
-#         json_gf.append({
-#             "id": fund.id,
-#             "dept": fund.department.dept_name,
-#             "budget": fund.budget,
-#             "year": fund.year
-#         })
-
-#     # pdb.set_trace()
-
-
-#     return jsonify(generalFundByDept=json_gf)
 
 
 @app.route('/api/<dept_code>')

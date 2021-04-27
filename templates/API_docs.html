@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container content"><article class="article__Article-dsqu2p-0 docs__Article-y8vzk-1 kuaylo gJdYTa"><h2 id="introduction">Introduction</h2><p>This documentation will help you get familiar with the resources of the <strong>Rick and Morty API</strong> and show you how to make different queries, so that you can get the most out of it.</p><h3 id="graphql">GraphQL</h3><p><a href="https://rickandmortyapi.com/graphql" target="_blank" rel="nofollow noopener noreferrer">https://rickandmortyapi.com/graphql</a></p><div class="gatsby-highlight" data-language="graphql"><pre class="language-graphql"><code class="language-graphql"><span class="token keyword">query</span> <span class="token punctuation">{</span>
+    characters<span class="token punctuation">(</span><span class="token attr-name">page</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token attr-name">filter</span><span class="token punctuation">:</span> <span class="token punctuation">{</span> <span class="token attr-name">name</span><span class="token punctuation">:</span> <span class="token string">"rick"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      info <span class="token punctuation">{</span>
+        count
+      <span class="token punctuation">}</span>
+      results <span class="token punctuation">{</span>
+        name
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    location<span class="token punctuation">(</span><span class="token attr-name">id</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      id
+    <span class="token punctuation">}</span>
+    episodesByIds<span class="token punctuation">(</span><span class="token attr-name">ids</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      id
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  </code>
+</pre></div>
+<blockquote><p><em>New to GraphQL? check the docs <a href="https://graphql.org/learn/" target="_blank" rel="nofollow noopener noreferrer">here</a></em></p></blockquote>
+<h3 id="rest">REST</h3><p><strong>Base url:</strong> <a href="https://rickandmortyapi.com/api" target="_blank" rel="nofollow noopener noreferrer">https://rickandmortyapi.com/api</a></p>
+<p>The base url contains information about all available API's resources.
+  All requests are <code class="language-text">GET</code> requests and go over <code class="background language-text">https</code>. All responses will return data in <code class="language-text">json</code>.</p><div class="restQuery__Wrapper-tkzubw-0 iQKEuF gatsby-highlight" data-language="shell"><pre class="language-shell"><code class="language-shell"><span class="endpoint"><span class="request">GET </span>https://rickandmortyapi.com/api</span></code></pre></div>
+  <div class="gatsby-highlight bg-dark" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"characters"</span><span class="token operator">:</span> <span class="token string">"https://rickandmortyapi.com/api/character"</span><span class="token punctuation">,</span>
+    <span class="token property">"locations"</span><span class="token operator">:</span> <span class="token string">"https://rickandmortyapi.com/api/location"</span><span class="token punctuation">,</span>
+    <span class="token property">"episodes"</span><span class="token operator">:</span> <span class="token string">"https://rickandmortyapi.com/api/episode"</span>
+  
+{% endblock %}

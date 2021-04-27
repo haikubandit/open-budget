@@ -5,71 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Open Budget Omaha</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/lumen/bootstrap.min.css" integrity="sha384-GzaBcW6yPIfhF+6VpKMjxbTx6tvR/yRd/yJub90CqoIn2Tz4rRXlSpTFYMKHCifX" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/app.css">
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <a class="navbar-brand align-middle" href="http://127.0.0.1:5000/"><i class="far fa-chart-bar fa-2x pr-2 align-middle"></i>Open Budget Omaha</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
       
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
+        <div class="collapse navbar-collapse justify-content-end pr-3" id="navbarSupportedContent">
+          <ul class="navbar-nav">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
+                Budgets
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
+                <a class="dropdown-item" href="#">General Fund</a>
+                <a class="dropdown-item" href="#">Revenues</a>
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
+              <a class="nav-link" href="http://127.0.0.1:5000/docs/api">API Docs</a>
             </li>
           </ul>
-          <form class="form-inline my-2 my-lg-0">
+          <!-- <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+          </form> -->
         </div>
     </nav>
 
-    <main class="container justify-content-center bg-primary">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="bg-white">
-              <h3>City General Fund</h3>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div id="charts" class="bg-white" style="width:500px;height:500px;">
-              <canvas id="revenuesChart" style="width:100%;height:100%;"></canvas>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="bg-white">
-              <h3>City Revenues</h3>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <!-- <div id="charts" class="bg-white" style="width:500px;height:500px;">
-              <canvas id="revenuesChart" style="width:100%;height:100%;"></canvas>
-            </div> -->
-          </div>
-        </div>
+    <main>
+
+      {% block content %}
+      {% endblock %}
+
     </main>
 
 

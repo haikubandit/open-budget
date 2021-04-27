@@ -1,0 +1,49 @@
+:root {
+	--property: #ff79c6;
+	--numeric: #f08d49;
+	--string: #4cff8f;
+	--keyword: #66d9ef;
+	--punctuation: #abb2bf;
+	--background: #202329;
+	--radius: 6px;
+	--inline-background: rgba(27, 31, 35, 0.050980392156862744);
+	--inline-color: #476582;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+.section-1 {
+	padding-top: 10rem;
+	padding-bottom: calc(10rem - 4.5rem);
+	background-image: url("https://pointjupiter.com/wp-content/uploads/participatory-design-what-is-Photo-by-Perry-Grone-on-Unsplash.jpg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-size: cover;
+	color: white;
+	text-shadow: 2px 2px 5px #1f65c2;
+}
+.section-1 h1 {
+	font-size: 2.25rem;
+}
+@media (min-width: 992px) {
+	header.masthead {
+		height: 100vh;
+		min-height: 40rem;
+		padding-top: 4.5rem;
+		padding-bottom: 0;
+	}
+	header.masthead p {
+		font-size: 1.15rem;
+	}
+	header.masthead h1 {
+		font-size: 3rem;
+	}
+}
+@media (min-width: 1200px) {
+	header.masthead h1 {
+		font-size: 3.5rem;
+	}
+}
