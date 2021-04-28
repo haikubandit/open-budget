@@ -28,6 +28,18 @@
 .section-1 h1 {
 	font-size: 2.25rem;
 }
+
+.budgets h3 {
+	font-size: 3rem;
+}
+
+.budget-title {
+	height: 100%;
+	color: #1f65c2;
+	display: flex;
+	vertical-align: middle;
+}
+
 @media (min-width: 992px) {
 	header.masthead {
 		height: 100vh;
